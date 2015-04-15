@@ -294,7 +294,7 @@ function drawDirections(){
     ctx.fillText("Don't wake up the bear for 45 seconds!",300,400,1620,780);
     ctx.fillText("Hit       to begin",300,600,1620,780);
     ctx.fillStyle="purple";
-    ctx.fillRect(438,545,100,60);
+    ctx.fillRect(420,545,100,60);
 }
 
 function drawGameOver(){
