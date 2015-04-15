@@ -237,26 +237,28 @@ function drawPlayer(drawnX,drawnY,direction){
     }
     //
     if (player.near==="banjo"){
-        drawToolTip("hit d to play the banjo",drawnX,drawnY);
+        drawToolTip("hit      to play the banjo",drawnX,drawnY);
     }
     else if (player.near === "fireworks"){
-        drawToolTip("hit d to set off fireworks",drawnX,drawnY);
+        drawToolTip("hit      to set off fireworks",drawnX,drawnY);
     }
     else if (player.near === "chains"){
-        drawToolTip("hit d to rattle the chain",drawnX,drawnY);        
+        drawToolTip("hit      to rattle the chain",drawnX,drawnY);        
     }
     else if (player.near === "sunchips"){
-        drawToolTip("hit d to eat sunchips",drawnX,drawnY);        
+        drawToolTip("hit      to eat sunchips",drawnX,drawnY);        
     }
 }
 
 function drawToolTip(tip,drawnX,drawnY){
     if(listening){
         ctx.fillStyle="rgba(0,0,255,.5";
-        ctx.fillRect(drawnX+playerWidth/2,drawnY-playerHeight,240,50);
+        ctx.fillRect(drawnX+playerWidth/2,drawnY-playerHeight,270,50);
         ctx.fillStyle="white";
         ctx.font = "20px Arial";
         ctx.fillText(tip,drawnX+playerWidth/2+20,drawnY-playerHeight+30);
+        ctx.fillStyle = "purple";
+        ctx.fillRect(drawnX+playerWidth/2+49,drawnY-playerHeight+17, 20,13);
     }
 }
 
@@ -290,7 +292,9 @@ function drawDirections(){
     ctx.drawImage(imgOverlay,200,200);
     ctx.fillStyle="black";
     ctx.fillText("Don't wake up the bear for 45 seconds!",300,400,1620,780);
-    ctx.fillText("Hit P to begin",300,600,1620,780);
+    ctx.fillText("Hit       to begin",300,600,1620,780);
+    ctx.fillStyle="purple";
+    ctx.fillRect(438,545,100,60);
 }
 
 function drawGameOver(){
@@ -325,7 +329,7 @@ function drawBear(){
 
 //useractions
 function handleKeys(){
-    if (keysDown[80]&&gameStarted==false){
+    if ((keysDown[85] || keysDown[77] || keysDown[66] || keysDown[84])&&gameStarted==false){
         listening=true;
         gameStarted=true;
     }
@@ -334,7 +338,7 @@ function handleKeys(){
         return;
     }
     //action moves
-    if (keysDown[68] || keysDown[69] || keysDown[70] || keysDown[82]){
+    if (keysDown[85] || keysDown[77] || keysDown[66] || keysDown[84]){
         handleActionKey();
     }
     // 38 is up, 39 is right, 40 is down, 37 is left
